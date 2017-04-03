@@ -22,9 +22,9 @@ The available units are nanoseconds (\code{"ns"}), microseconds
 
 \item{horizontal}{Logical. If set to \code{TRUE}, X and Y axes will be switched. Defaults to \code{FALSE}.}
 
-\item{violin}{Logical. Use \code{\link[ggplot2]{geom_violin}} instead \code{\link[ggplot2]{geom_boxplot}} for the \code{ggplot} plots.}
+\item{violin}{Logical. Use \code{\link[ggplot2:geom_violin]{ggplot2::geom_violin()}} instead \code{\link[ggplot2:geom_boxplot]{ggplot2::geom_boxplot()}} for the \code{ggplot} plots.}
 
-\item{...}{Arguments passed on to \code{\link{boxplot.default}}.}
+\item{...}{Arguments passed on to \code{\link[=boxplot.default]{boxplot.default()}}.}
 }
 \description{
 Displays measurement results as box plots, with R expressions on X axis and
@@ -42,10 +42,9 @@ timings <- benchmark(
 boxplot(timings)
 
 }
+\seealso{
+\code{\link[=plot.benchmark]{plot.benchmark()}}
+}
 \author{
 Artem Klevtsov \email{a.a.klevtsov@gmail.com}
 }
-\seealso{
-\code{\link{plot.benchmark}}
-}
-

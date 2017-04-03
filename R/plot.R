@@ -1,22 +1,22 @@
-#' @title Plot method for the \code{benchmark} timings.
+#' @title Plot method for the `benchmark` timings.
 #'
 #' @description
 #' Displays measurement results as a scatter plot, with R expressions on X axis
 #' and execution time on Y axis. Each expression is highlighted by its own colour.
 #'
-#' @param x An object of class \code{benchmark}.
+#' @param x An object of class `benchmark`.
 #' @param units Character. The units to be used in printing the timings.
-#' The available units are nanoseconds (\code{"ns"}), microseconds
-#' (\code{"us"}), milliseconds (\code{"ms"}), seconds (\code{"s"}).
+#' The available units are nanoseconds (`"ns"`), microseconds
+#' (`"us"`), milliseconds (`"ms"`), seconds (`"s"`).
 #' @param log Logical. Should times be plotted on log scale?
 #' @param xlab Character. X axis label.
 #' @param ylab Character. Y axis label.
 #' @param \dots Not currently used.
 #'
 #' @details
-#' If \code{ggplot2} package is available, it will be used. In order to switch to default
- #' \code{boxplot} from the \code{graphics} package set option \code{benchr.use_ggplot}
-#' to \code{FALSE}: \code{options(benchr.use_ggplot = FALSE)}.
+#' If `ggplot2` package is available, it will be used. In order to switch to default
+ #' `boxplot` from the `graphics` package set option `benchr.use_ggplot`
+#' to `FALSE`: `options(benchr.use_ggplot = FALSE)`.
 #'
 #' @include utils.R
 #' @importFrom graphics plot
@@ -26,7 +26,7 @@
 #' @author Artem Klevtsov \email{a.a.klevtsov@gmail.com}
 #'
 #' @seealso
-#' \code{\link{boxplot.benchmark}}
+#' [boxplot.benchmark()]
 #'
 #' @examples
 #' timings <- benchmark(
@@ -61,7 +61,9 @@ plot_ggplot <- function(x, log = TRUE, xlab, ylab) {
         ggplot2::labs(x = xlab, y = ylab, colour = NULL)
     if (log)
         p <- p + ggplot2::scale_y_log10()
-    print(p)
+    else
+        p <- p + ggplot2::expand_limits(y = 0)
+    p
 }
 
 # graphics variant of the plot

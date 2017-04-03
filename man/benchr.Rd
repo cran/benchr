@@ -4,6 +4,7 @@
 \name{benchr}
 \alias{benchr}
 \alias{benchr-package}
+\alias{benchr-package}
 \title{High Precise Measurement of R Expressions Execution Time}
 \description{
 Package \pkg{benchr} provides an infrastructure (framework) for precise
@@ -11,15 +12,15 @@ measurement of R expressions execution time.
 }
 \details{
 To measure execution time, \pkg{benchr} provides function
-\code{\link{benchmark}}, as well as a number of additional methods for
+\code{\link[=benchmark]{benchmark()}}, as well as a number of additional methods for
 analysis and representation of results.
 
 For precise time measurement we use a cross-platform monotone clock, provided
-by C++11 standard in header file `chrono`. The timer accuracy depends on the
+by C++11 standard in header file \code{chrono}. The timer accuracy depends on the
 implementation by the compiler in use, the OS and the hardware. Most
 commonly, the precision is one micro- or nanosecond. We provide the
 opportunity to get the timer accuracy (time interval between two consecutive
-timer ticks) via function \code{\link{timer_precision}}. This accuracy is
+timer ticks) via function \code{\link[=timer_precision]{timer_precision()}}. This accuracy is
 also listed in the output of implicit or explicit \code{print} call.
 
 We estimate the timer overhead before the actual measurement by running
@@ -56,7 +57,7 @@ compare not only algorithms with the same result, but also the same algorithm
 with different input parameters (e.g. input data sets of different size).
 
 We also do not check whether the expressions are \code{language} objects (see
-\code{\link{is.language}}) and do not coerce to that type.
+\code{\link[=is.language]{is.language()}}) and do not coerce to that type.
 }
 \section{Package options}{
 
@@ -64,14 +65,15 @@ accessible through function arguments. We allow to modify these parameters
 via package options. We have tried to set optimal default values, which you
 may consider changing in some cases. Here's a complete list of package options:
 \describe{
-  \item{\option{benchr.warmup}}{Number of iterations for timer overhead
-  estimation (\code{2*10^5} by default).}
-  \item{\option{benchr.print_details}}{Whether additional information
-  on the measurement parameters should be displayed (\code{FALSE} by default).}
-  \item{\option{benchr.use_ggplot}}{Whether \pkg{ggplot2} package should be
-  used to produce plots, if the package is installed (\code{TRUE} by default).}
+\item{\option{benchr.warmup}}{Number of iterations for timer overhead
+estimation (\code{2*10^5} by default).}
+\item{\option{benchr.print_details}}{Whether additional information
+on the measurement parameters should be displayed (\code{FALSE} by default).}
+\item{\option{benchr.use_ggplot}}{Whether \pkg{ggplot2} package should be
+used to produce plots, if the package is installed (\code{TRUE} by default).}
 }
 }
+
 \examples{
 # Benchmark expressions
 res <- benchmark(rep(1:10, each = 10),
@@ -83,4 +85,21 @@ summary(res)
 boxplot(res)
 
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://gitlab.com/artemklevtsov/benchr}
+  \item Report bugs at \url{https://gitlab.com/artemklevtsov/benchr/issues}
+}
 
+}
+\author{
+\strong{Maintainer}: Artem Klevtsov \email{a.a.klevtsov@gmail.com}
+
+Other contributors:
+\itemize{
+  \item Anton Antonov \email{tonytonov@gmail.com} [contributor]
+  \item Philipp Upravitelev \email{upravitelev@gmail.com} [contributor]
+}
+
+}

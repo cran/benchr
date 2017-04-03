@@ -53,10 +53,9 @@ timings <- benchmark(
 mean(timings)
 
 }
+\seealso{
+\code{\link[=summary.benchmark]{summary.benchmark()}}
+}
 \author{
 Artem Klevtsov \email{a.a.klevtsov@gmail.com}
 }
-\seealso{
-\code{\link{summary.benchmark}}
-}
-

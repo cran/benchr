@@ -1,5 +1,7 @@
 // [[Rcpp::plugins(cpp11)]]
+// [[Rcpp::depends(RcppProgress)]]
 
+#include <progress.hpp>
 #include <Rcpp.h>
 #include "clock.h"
 
@@ -14,14 +16,16 @@ long double do_timing(const RObject& expr, const Environment& env) {
 }
 
 // [[Rcpp::export]]
-NumericVector do_benchmark(const List& exprs, const Environment& env,
-                          const IntegerVector& order, bool gc) {
+NumericVector do_benchmark(const List& exprs, const Environment& env, const IntegerVector& order,
+                           bool gc = false, bool progress = false) {
     std::size_t n = order.length();
     NumericVector res = no_init(n);
+    Progress pb(n, progress);
     for (std::size_t i = 0; i < n; ++i) {
-        SEXP expr = exprs[order[i] - 1];
+        pb.increment();
+        RObject expr = exprs[order[i] - 1];
         res[i] = do_timing(expr, env);
-        checkUserInterrupt();
+        Progress::check_abort();
         if (gc) R_gc();
     }
     return res;

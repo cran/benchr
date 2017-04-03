@@ -37,10 +37,9 @@ timings <- benchmark(
 plot(timings)
 
 }
+\seealso{
+\code{\link[=boxplot.benchmark]{boxplot.benchmark()}}
+}
 \author{
 Artem Klevtsov \email{a.a.klevtsov@gmail.com}
 }
-\seealso{
-\code{\link{boxplot.benchmark}}
-}
-

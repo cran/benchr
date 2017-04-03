@@ -19,9 +19,10 @@ test_that("Timer error greater then 0", {
 })
 
 test_that("Test 'do_timing' and 'Sys.sleep'", {
-    expect_gte(do_timing(quote(Sys.sleep(1e-3)), .GlobalEnv), 1e-3)
-    expect_gte(do_timing(quote(Sys.sleep(2e-3)), .GlobalEnv), 2e-3)
-    expect_gte(do_timing(quote(Sys.sleep(3e-3)), .GlobalEnv), 3e-3)
+    skip_on_os("windows")
+    expect_gte(do_timing(quote(Sys.sleep(0.1)), .GlobalEnv), 0.1)
+    expect_gte(do_timing(quote(Sys.sleep(0.2)), .GlobalEnv), 0.2)
+    expect_gte(do_timing(quote(Sys.sleep(0.3)), .GlobalEnv), 0.3)
 })
 
 test_that("'do_timing' result greater then timer error", {

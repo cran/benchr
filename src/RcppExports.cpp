@@ -39,8 +39,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // do_benchmark
-NumericVector do_benchmark(const List& exprs, const Environment& env, const IntegerVector& order, bool gc);
-RcppExport SEXP benchr_do_benchmark(SEXP exprsSEXP, SEXP envSEXP, SEXP orderSEXP, SEXP gcSEXP) {
+NumericVector do_benchmark(const List& exprs, const Environment& env, const IntegerVector& order, bool gc, bool progress);
+RcppExport SEXP benchr_do_benchmark(SEXP exprsSEXP, SEXP envSEXP, SEXP orderSEXP, SEXP gcSEXP, SEXP progressSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -48,7 +48,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const Environment& >::type env(envSEXP);
     Rcpp::traits::input_parameter< const IntegerVector& >::type order(orderSEXP);
     Rcpp::traits::input_parameter< bool >::type gc(gcSEXP);
-    rcpp_result_gen = Rcpp::wrap(do_benchmark(exprs, env, order, gc));
+    Rcpp::traits::input_parameter< bool >::type progress(progressSEXP);
+    rcpp_result_gen = Rcpp::wrap(do_benchmark(exprs, env, order, gc, progress));
     return rcpp_result_gen;
 END_RCPP
 }

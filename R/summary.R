@@ -1,18 +1,18 @@
-#' @title Summary method for the \code{benchmark} timings.
+#' @title Summary method for the `benchmark` timings.
 #'
 #' @description
 #' This method computes aggregated statistics (quantiles, means and sums)
 #' for each expression.
 #'
-#' @param object An object of class \code{benchmark}.
+#' @param object An object of class `benchmark`.
 #' @param relative Character. The name or index of the column whose values
 #' will be used to compute relative timings.
 #' @param \dots Not currently used.
 #'
-#' @return The method returns a \code{data.frame} with additional attributes,
+#' @return The method returns a `data.frame` with additional attributes,
 #' which contains these columns:
 #' \item{expr}{The deparsed expression as passed to
-#' \code{benchmark} or the name of the argument if the expression was
+#' `benchmark` or the name of the argument if the expression was
 #' passed as a named argument.}
 #' \item{n.eval}{Number of successful measurements.}
 #' \item{min}{Minimal timing measurement for this expression.}
@@ -23,7 +23,7 @@
 #' \item{max}{Maximal timing measurement for this expression.}
 #' \item{total}{Total (summed) measured time for this expression.}
 #' \item{relative}{Relative difference across expressions compared to a minimal
-#'  value in the column, specified by the argument \code{relative}.}
+#'  value in the column, specified by the argument `relative`.}
 #'
 #' Additional attributes:
 #' \item{units}{Units for time intervals.}
@@ -36,7 +36,7 @@
 #' @author Artem Klevtsov \email{a.a.klevtsov@gmail.com}
 #'
 #' @seealso
-#' \code{\link{mean.benchmark}}
+#' [mean.benchmark()]
 #'
 #' @examples
 #' timings <- benchmark(

@@ -29,7 +29,7 @@ passed as a named argument.}
 \item{max}{Maximal timing measurement for this expression.}
 \item{total}{Total (summed) measured time for this expression.}
 \item{relative}{Relative difference across expressions compared to a minimal
- value in the column, specified by the argument \code{relative}.}
+value in the column, specified by the argument \code{relative}.}
 
 Additional attributes:
 \item{units}{Units for time intervals.}
@@ -45,10 +45,9 @@ timings <- benchmark(
 summary(timings)
 
 }
+\seealso{
+\code{\link[=mean.benchmark]{mean.benchmark()}}
+}
 \author{
 Artem Klevtsov \email{a.a.klevtsov@gmail.com}
 }
-\seealso{
-\code{\link{mean.benchmark}}
-}
-

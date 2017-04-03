@@ -1,26 +1,26 @@
-#' @title Print method for the \code{benchmark} timings.
+#' @title Print method for the `benchmark` timings.
 #'
 #' @description
 #' This is universal method of measurement results representation, which can be
-#' called either implicitly or explicitly. The method uses \code{summary} method
-#' to compute aggregated statistics for benchmarking results. \code{print} also
+#' called either implicitly or explicitly. The method uses `summary` method
+#' to compute aggregated statistics for benchmarking results. `print` also
 #' provides additional information about the timer precision and overhead, the
 #' execution regime and the number of repeats.
 #'
-#' @param x An object of class \code{benchmark}, \code{summaryBenchmark} or
-#' \code{meanBenchmark}.
+#' @param x An object of class `benchmark`, `summaryBenchmark` or
+#' `meanBenchmark`.
 #' @param units Character. The units to be used in printing the timings.
-#' The available units are nanoseconds (\code{"ns"}), microseconds
-#' (\code{"us"}), milliseconds (\code{"ms"}), seconds (\code{"s"}).
+#' The available units are nanoseconds (`"ns"`), microseconds
+#' (`"us"`), milliseconds (`"ms"`), seconds (`"s"`).
 #' @param order Character. Order results according to this column of the output.
-#' @param relative Character. The name or index of the column whose values will 
+#' @param relative Character. The name or index of the column whose values will
 #' be used to compute relative timings.
 #' @param details Logical. Show additional detauls about measurement process.
-#' @param ... Arguments passed on to \code{print.data.frame}.
+#' @param ... Arguments passed on to [print.data.frame()].
 #'
-#' @return Apart from the table output produced by \code{summary}, the method
+#' @return Apart from the table output produced by `summary`, the method
 #' also prints additional information about the benchmarking process (with
-#' \code{details = TRUE}):
+#' `details = TRUE`):
 #' \item{Timer precision}{Timer precision in seconds.}
 #' \item{Timer error}{Timer error (overhead) in seconds.}
 #' \item{Replications}{Number of repeats for each expression.}
@@ -35,8 +35,8 @@
 #' @author Artem Klevtsov \email{a.a.klevtsov@gmail.com}
 #'
 #' @seealso
-#' \code{\link{summary.benchmark}},
-#' \code{\link{mean.benchmark}}
+#' [summary.benchmark()],
+#' [mean.benchmark()]
 #'
 #' @examples
 #' a1 <- a2 <- a3 <- a4 <- numeric(0)

@@ -1,9 +1,9 @@
 #' @title High Precise Measurement of R Expressions Execution Time
 #'
 #' @description
-#' \code{benchmark} serves as a more accurate replacement of the often
-#' seen \code{system.time(replicate(1000, expr))} expression. It tries hard to
-#' accurately measure only the time it takes to evaluate \code{expr}.
+#' `benchmark` serves as a more accurate replacement of the often
+#' seen `system.time(replicate(1000, expr))` expression. It tries hard to
+#' accurately measure only the time it takes to evaluate `expr`.
 #' To achieve this, the sub-millisecond (supposedly nanosecond) accurate
 #' timing functions most modern operating systems provide are used.
 #' Additionally all evaluations of the expressions are done in C++ code to
@@ -17,14 +17,15 @@
 #' @param gcFirst Logical. Should a garbage collection be performed immediately
 #' before the timing?
 #' @param gcDuring Logical. Should a garbage collection be performed immediately
-#' before each iteration, as produced by \code{times}? (very slow)
+#' before each iteration, as produced by `times`? (very slow)
+#' @param progress Logical. Show progress bar during expressions evaluation.
 #'
 #' @details
-#' Before evaluating each expression \code{times} times, the overhead of
+#' Before evaluating each expression `times` times, the overhead of
 #' calling the timing functions and the C++ function call overhead are
 #' estimated. This estimated overhead is subtracted from each measured
 #' evaluation time. Should the resulting timing be negative, a warning
-#' is thrown and the respective value is replaced by \code{0}. If the timing
+#' is thrown and the respective value is replaced by `0`. If the timing
 #' is zero, a warning is also raised. Should all evaluations result in one of
 #' the two error conditions described above, an error is raised.
 #'
@@ -36,10 +37,10 @@
 #'     as one block.}
 #' }
 #'
-#' @return Object of class \code{benchmark}, which is a \code{data.frame} with
+#' @return Object of class `benchmark`, which is a `data.frame` with
 #' a number of additional attributes and contains the following columns:
 #' \item{expr}{The deparsed expression as passed to
-#' \code{benchmark} or the name of the argument if the expression was
+#' `benchmark` or the name of the argument if the expression was
 #' passed as a named argument.}
 #' \item{time}{The measured execution time of the expression in seconds.
 #' The order of the observations in the data frame is the order in which they
@@ -60,11 +61,11 @@
 #' @author Artem Klevtsov \email{a.a.klevtsov@gmail.com}
 #'
 #' @seealso
-#' \code{\link{summary.benchmark}},
-#' \code{\link{mean.benchmark}},
-#' \code{\link{print.benchmark}},
-#' \code{\link{plot.benchmark}},
-#' \code{\link{boxplot.benchmark}}
+#' [summary.benchmark()],
+#' [mean.benchmark()],
+#' [print.benchmark()],
+#' [plot.benchmark()],
+#' [boxplot.benchmark()]
 #'
 #' @examples
 #' ## Measure the time it takes to dispatch a simple function call
@@ -79,18 +80,19 @@
 #' boxplot(res)
 #'
 benchmark <- function(..., times = 100L, order = c("random", "inorder", "block"),
-                      envir = parent.frame(), gcFirst = TRUE, gcDuring = FALSE) {
+                      envir = parent.frame(), progress = TRUE,
+                      gcFirst = TRUE, gcDuring = FALSE) {
     if (length(list(...)) == 0)
         stop("No expressions to benchmark.")
-    if (times <= 0)
+    if (times <= 0L)
         stop("Argument 'times' should be positive integer.")
     order <- match.arg(order)
     exprs <- named_dots(...)
     exprs_order <- make_order(exprs, times, order)
-    warmup <- getOption("benchr.warmup", 2e5)
+    warmup <- getOption("benchr.warmup", 2e5L)
     if (gcFirst) gc(FALSE)
     error <- timer_error(warmup)
-    timings <- do_benchmark(exprs, parent.frame(), exprs_order, gcDuring)
+    timings <- do_benchmark(exprs, parent.frame(), exprs_order, gcDuring, progress)
     timings <- timings - error
     timings[timings < 0] <- NA_real_
     if (anyNA(timings)) {
@@ -105,7 +107,7 @@ benchmark <- function(..., times = 100L, order = c("random", "inorder", "block")
     structure(
         list(expr = exprs_order, time = timings),
         class = c("benchmark", "data.frame"),
-        row.names = c(NA, -length(timings)),
+        row.names = c(NA_integer_, -length(timings)),
         units = "s",
         error = error,
         precision = timer_precision(),

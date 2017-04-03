@@ -6,7 +6,7 @@
 #'
 #' @details
 #' To measure execution time, \pkg{benchr} provides function
-#' \code{\link{benchmark}}, as well as a number of additional methods for
+#' [benchmark()], as well as a number of additional methods for
 #' analysis and representation of results.
 #'
 #' For precise time measurement we use a cross-platform monotone clock, provided
@@ -14,21 +14,21 @@
 #' implementation by the compiler in use, the OS and the hardware. Most
 #' commonly, the precision is one micro- or nanosecond. We provide the
 #' opportunity to get the timer accuracy (time interval between two consecutive
-#' timer ticks) via function \code{\link{timer_precision}}. This accuracy is
-#' also listed in the output of implicit or explicit \code{print} call.
+#' timer ticks) via function [timer_precision()]. This accuracy is
+#' also listed in the output of implicit or explicit `print` call.
 #'
 #' We estimate the timer overhead before the actual measurement by running
-#' multiple (\code{2*10^5} by default) calls to an empty function. By doing that, we not
+#' multiple (`2*10^5` by default) calls to an empty function. By doing that, we not
 #' only estimate the overhead, but also produce a warm-up effect on the
 #' processor, taking it out from idle state. After the actual measurement
 #' results are adjusted by the timer overhead.
 #'
-#' Time intervals are measured in seconds and stored as \code{long double},
+#' Time intervals are measured in seconds and stored as `long double`,
 #' which lets us capture a wide range of possible values from
-#' \code{.Machine$double.xmin} to \code{.Machine$double.xmax}. This is quite
+#' `.Machine$double.xmin` to `.Machine$double.xmax`. This is quite
 #' enough to operate both within very small (nanoseconds) and very big time
 #' frames (e.g. the maximum time interval possible is
-#' \code{.Machine$double.xmax / 3600} hours).
+#' `.Machine$double.xmax / 3600` hours).
 #'
 #' It should be noted that the R session is not an isolated container with
 #' strictly bounded resources, therefore the execution time can be influenced by
@@ -50,8 +50,8 @@
 #' compare not only algorithms with the same result, but also the same algorithm
 #' with different input parameters (e.g. input data sets of different size).
 #'
-#' We also do not check whether the expressions are \code{language} objects (see
-#' \code{\link{is.language}}) and do not coerce to that type.
+#' We also do not check whether the expressions are `language` objects (see
+#' [is.language()]) and do not coerce to that type.
 #'
 #' @section Package options:
 #" Some of the available functionality is hidden from the user and not
@@ -60,11 +60,11 @@
 #' may consider changing in some cases. Here's a complete list of package options:
 #' \describe{
 #'   \item{\option{benchr.warmup}}{Number of iterations for timer overhead
-#'   estimation (\code{2*10^5} by default).}
+#'   estimation (`2*10^5` by default).}
 #'   \item{\option{benchr.print_details}}{Whether additional information
-#'   on the measurement parameters should be displayed (\code{FALSE} by default).}
+#'   on the measurement parameters should be displayed (`FALSE` by default).}
 #'   \item{\option{benchr.use_ggplot}}{Whether \pkg{ggplot2} package should be
-#'   used to produce plots, if the package is installed (\code{TRUE} by default).}
+#'   used to produce plots, if the package is installed (`TRUE` by default).}
 #' }
 #'
 #' @examples
@@ -80,7 +80,8 @@
 #' @name benchr
 #' @docType package
 #'
-#' @useDynLib benchr
+#' @useDynLib benchr, .registration=TRUE
 #' @importFrom Rcpp sourceCpp
+#' @import RcppProgress
 #'
 "_PACKAGE"

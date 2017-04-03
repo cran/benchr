@@ -5,7 +5,8 @@
 \title{High Precise Measurement of R Expressions Execution Time}
 \usage{
 benchmark(..., times = 100L, order = c("random", "inorder", "block"),
-  envir = parent.frame(), gcFirst = TRUE, gcDuring = FALSE)
+  envir = parent.frame(), progress = TRUE, gcFirst = TRUE,
+  gcDuring = FALSE)
 }
 \arguments{
 \item{...}{Captures any number of unevaluated expressions passed to
@@ -16,6 +17,8 @@ benchmark as named or unnamed arguments.}
 \item{order}{Character. The order in which the expressions are evaluated.}
 
 \item{envir}{The environment in which the expressions will be evaluated.}
+
+\item{progress}{Logical. Show progress bar during expressions evaluation.}
 
 \item{gcFirst}{Logical. Should a garbage collection be performed immediately
 before the timing?}
@@ -61,12 +64,13 @@ the two error conditions described above, an error is raised.
 \section{The order in which the expressions are evaluated}{
 
 \describe{
- \item{\dQuote{random}}{(the default) randomizes the execution order}
- \item{\dQuote{inorder}}{executes each expression in order}
- \item{\dQuote{block}}{executes all repetitions of each expression
-    as one block.}
+\item{\dQuote{random}}{(the default) randomizes the execution order}
+\item{\dQuote{inorder}}{executes each expression in order}
+\item{\dQuote{block}}{executes all repetitions of each expression
+as one block.}
 }
 }
+
 \examples{
 ## Measure the time it takes to dispatch a simple function call
 ## compared to simply evaluating the constant NULL
@@ -80,14 +84,13 @@ print(res)
 boxplot(res)
 
 }
+\seealso{
+\code{\link[=summary.benchmark]{summary.benchmark()}},
+\code{\link[=mean.benchmark]{mean.benchmark()}},
+\code{\link[=print.benchmark]{print.benchmark()}},
+\code{\link[=plot.benchmark]{plot.benchmark()}},
+\code{\link[=boxplot.benchmark]{boxplot.benchmark()}}
+}
 \author{
 Artem Klevtsov \email{a.a.klevtsov@gmail.com}
 }
-\seealso{
-\code{\link{summary.benchmark}},
-\code{\link{mean.benchmark}},
-\code{\link{print.benchmark}},
-\code{\link{plot.benchmark}},
-\code{\link{boxplot.benchmark}}
-}
-

@@ -16,7 +16,7 @@ do_timing <- function(expr, env) {
     .Call('benchr_do_timing', PACKAGE = 'benchr', expr, env)
 }
 
-do_benchmark <- function(exprs, env, order, gc) {
-    .Call('benchr_do_benchmark', PACKAGE = 'benchr', exprs, env, order, gc)
+do_benchmark <- function(exprs, env, order, gc = FALSE, progress = FALSE) {
+    .Call('benchr_do_benchmark', PACKAGE = 'benchr', exprs, env, order, gc, progress)
 }
 

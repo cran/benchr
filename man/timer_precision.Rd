@@ -12,4 +12,3 @@ Number of seconds from one clock tick to the next.
 \description{
 Get timer precision.
 }
-

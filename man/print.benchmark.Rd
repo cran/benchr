@@ -20,12 +20,12 @@ The available units are nanoseconds (\code{"ns"}), microseconds
 
 \item{order}{Character. Order results according to this column of the output.}
 
-\item{relative}{Character. The name or index of the column whose values will 
+\item{relative}{Character. The name or index of the column whose values will
 be used to compute relative timings.}
 
 \item{details}{Logical. Show additional detauls about measurement process.}
 
-\item{...}{Arguments passed on to \code{print.data.frame}.}
+\item{...}{Arguments passed on to \code{\link[=print.data.frame]{print.data.frame()}}.}
 }
 \value{
 Apart from the table output produced by \code{summary}, the method
@@ -54,11 +54,10 @@ res <- benchmark(a1 <- c(a1, 1),
 print(res)
 
 }
+\seealso{
+\code{\link[=summary.benchmark]{summary.benchmark()}},
+\code{\link[=mean.benchmark]{mean.benchmark()}}
+}
 \author{
 Artem Klevtsov \email{a.a.klevtsov@gmail.com}
 }
-\seealso{
-\code{\link{summary.benchmark}},
-\code{\link{mean.benchmark}}
-}
-
