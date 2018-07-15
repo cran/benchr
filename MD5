@@ -1,7 +1,7 @@
-57985f516df524d12b20b77c8919f6a1 *DESCRIPTION
+aecc938d0b0725cb0ef25eb7a5c9e544 *DESCRIPTION
 8e272434c71f88e8e89d179c914f735e *NAMESPACE
-eb292d21903473d6ce787405662cfeaf *NEWS.md
-c977d327269d09475cbd1f15bd534c97 *R/RcppExports.R
+4d5ce5595256f6f527113ddb13413164 *NEWS.md
+1cfd3b72d412596e237b6fe9359f8b61 *R/RcppExports.R
 48dd8cf626964fc37156c1c15e9a800e *R/benchmark.R
 347bb2b65e0317e89a423cbec9660067 *R/benchr-package.R
 9e10634b3c42b4b2ef7382ed23bd94e5 *R/boxplot.R
@@ -13,7 +13,7 @@ e082d931f32156fb477cb728e91fce2b *R/summary.R
 bcf9c60ad48b62d01f85a3ff774d2b44 *R/units.R
 8396331ba02fc57847a9d4afe410db80 *R/utils.R
 ea413e725b748e9687cce19c20ae3914 *R/zzz.R
-434fff7e0b4ddf74acab63376ba6c701 *README.md
+48681e8215342a2939b9dab54ca5f4df *README.md
 2c7505914e735e2a1fbe7d9f69911c6b *man/benchmark.Rd
 b1657d89164f542afd1117714999eefc *man/benchr.Rd
 dcfd7c46eb26ce8c73664450b47b6b1c *man/boxplot.benchmark.Rd
@@ -24,10 +24,9 @@ e6a12340189f7bfa3aacca4e17225e09 *man/plot.benchmark.Rd
 28baa84461960207444a6ffa6f14b95a *man/timer_precision.Rd
 e3d3cb360fbfdb3c6974e14eb5f09870 *src/Makevars
 e3d3cb360fbfdb3c6974e14eb5f09870 *src/Makevars.win
-cf38f409a0fce5d65c2aef478533fe43 *src/RcppExports.cpp
+5da56dd3313dc6e6b53aa2380e22c534 *src/RcppExports.cpp
 830ffcb41626d9d748e2dc8253218551 *src/clock.h
 8072156cc225a8d0f874ca487bee17cf *src/error.cpp
-af9a3448144a9f069f48dd5193eddad0 *src/init.c
 dd1051ced30b291613355ce8cd78bd9c *src/precision.cpp
 b86eadcbd10c9fc0ab8862459ee2d80b *src/timer.cpp
 17036b4e16eb1214cdc29fc56ea0ac60 *tests/testthat.R
@@ -36,7 +35,7 @@ b86eadcbd10c9fc0ab8862459ee2d80b *src/timer.cpp
 f2fd6fde901bb9ab323e00bfdca51f3c *tests/testthat/test-format.R
 8db935eada51c0eebc1f2c3a899f95fa *tests/testthat/test-mean.R
 d106a1fa56dd1ed541af89871ede44d0 *tests/testthat/test-order.R
-08c024493b57196c2ca5d884e3be3d1d *tests/testthat/test-plot.R
+e7cebc4a8d87fbc60919e7892d61b460 *tests/testthat/test-plot.R
 f3383a95d82ec6e12d6bbe9c01ad2070 *tests/testthat/test-print.R
 98dc8233deb5a3db689855dc2ad003ce *tests/testthat/test-summary.R
-c83e9ad63af060e466340a67d1a25e67 *tests/testthat/test-timer.R
+22e610ae21724404ad454a5e27705b68 *tests/testthat/test-timer.R

@@ -1,8 +1,9 @@
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 benchr
 ======
 
- [![GitLab CI Build Status](https://gitlab.com/artemklevtsov/benchr/badges/master/build.svg)](https://gitlab.com/artemklevtsov/benchr/pipelines) [![AppVeyror Build status](https://ci.appveyor.com/api/projects/status/hoq3abe0kn34ie56/branch/master?svg=true)](https://ci.appveyor.com/project/artemklevtsov/benchr) [![Codecov Code Coverage](https://codecov.io/gl/artemklevtsov/benchr/branch/master/graph/badge.svg)](https://codecov.io/gl/artemklevtsov/benchr) [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN Status](http://www.r-pkg.org/badges/version/benchr)](https://cran.r-project.org/package=benchr)
+[![GitLab CI Build Status](https://gitlab.com/artemklevtsov/benchr/badges/master/build.svg)](https://gitlab.com/artemklevtsov/benchr/pipelines) [![AppVeyror Build status](https://ci.appveyor.com/api/projects/status/hoq3abe0kn34ie56/branch/master?svg=true)](https://ci.appveyor.com/project/artemklevtsov/benchr) [![Codecov Code Coverage](https://codecov.io/gl/artemklevtsov/benchr/branch/master/graph/badge.svg)](https://codecov.io/gl/artemklevtsov/benchr) [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN Status](http://www.r-pkg.org/badges/version/benchr)](https://cran.r-project.org/package=benchr)
 
 Package `benchr` provides an infrastructure (framework) for precise measurement of R expressions execution time.
 
@@ -25,10 +26,10 @@ To install the package from the CRAN run the following command:
 install.packages("benchr", repos = "https://cloud.r-project.org/")
 ```
 
-To install the development version from git repository the `install_git()` function from `devtools` package can be used:
+To install the development version the following command can be used:
 
 ``` r
-devtools::install_git("https://gitlab.com/artemklevtsov/benchr")
+install.packages("benchr", repos = "https://artemklevtsov.gitlab.io/benchr/drat")
 ```
 
 This package contains the compiled code, so to install it on Windows you will also need [Rtools](https://cran.r-project.org/bin/windows/Rtools/).
@@ -40,12 +41,14 @@ To measure execution time of arbitrary R code, `benchr` provides function `bench
 
 ``` r
 library(benchr)
-benchmark(rep(1:10, each = 10), rep.int(1:10, rep.int(10, 10)))
+benchmark(rep(1:100, each = 10), rep.int(1:100, rep.int(10, 100)))
 #> Benchmark summary:
-#> Time units : microseconds
-#>                            expr n.eval  min lw.qu median mean up.qu  max total relative
-#>            rep(1:10, each = 10)    100 2.28  2.44   2.50 2.52  2.56 4.32   252     1.32
-#>  rep.int(1:10, rep.int(10, 10))    100 1.63  1.80   1.89 1.92  1.99 4.34   192     1.00
+#> Time units : microseconds 
+#>                              expr n.eval   min lw.qu median  mean up.qu  max total relative
+#>             rep(1:100, each = 10)    100 19.80 19.90  20.10 20.30 20.20 27.6  2030     7.16
+#>  rep.int(1:100, rep.int(10, 100))    100  2.14  2.66   2.81  3.01  3.03 15.1   301     1.00
+identical(rep(1:100, each = 10), rep.int(1:100, rep.int(10, 100)))
+#> [1] TRUE
 ```
 
 The resulting object can be saved as a variable and reused later in further methods:
@@ -53,11 +56,11 @@ The resulting object can be saved as a variable and reused later in further meth
 ``` r
 res <- benchmark(NULL, {NULL}, {{{NULL}}})
 summary(res)
-#> Time units : nanoseconds
-#>              expr n.eval min lw.qu median  mean up.qu max total relative
-#>              NULL    100   8    14     16  16.4    19  31  1640     1.00
-#>          { NULL }    100  97   109    115 116.0   120 197 11600     7.19
-#>  { { { NULL } } }    100 159   178    181 190.0   187 871 19000    11.30
+#> Time units : nanoseconds 
+#>              expr n.eval min lw.qu median   mean up.qu  max total relative
+#>              NULL    100   5     7      9   8.68     9   24   868      1.0
+#>          { NULL }    100  48    52     54  72.30    63 1200  7230      6.0
+#>  { { { NULL } } }    100 132   145    150 158.00   155  644 15800     16.7
 ```
 
 To present the results of measurements implemented additional methods for the class `benchmark` object:

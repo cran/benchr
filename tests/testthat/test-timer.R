@@ -34,9 +34,3 @@ test_that("'do_benchmark' return correct object", {
     expect_is(b, "numeric")
     expect_length(b, 10L)
 })
-
-test_that("Allocate larger vector are slower", {
-    b <- benchmark(1:10, 1:10000)
-    m <- tapply(b$time, b$expr, median)
-    expect_lte(m[1], m[2])
-})
