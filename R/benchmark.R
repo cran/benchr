@@ -78,40 +78,43 @@
 #'
 #' ## Plot results
 #' boxplot(res)
-#'
 benchmark <- function(..., times = 100L, order = c("random", "inorder", "block"),
                       envir = parent.frame(), progress = TRUE,
                       gcFirst = TRUE, gcDuring = FALSE) {
-    if (length(list(...)) == 0)
-        stop("No expressions to benchmark.")
-    if (times <= 0L)
-        stop("Argument 'times' should be positive integer.")
-    order <- match.arg(order)
-    exprs <- named_dots(...)
-    exprs_order <- make_order(exprs, times, order)
-    warmup <- getOption("benchr.warmup", 2e5L)
-    if (gcFirst) gc(FALSE)
-    error <- timer_error(warmup)
-    timings <- do_benchmark(exprs, parent.frame(), exprs_order, gcDuring, progress)
-    timings <- timings - error
-    timings[timings < 0] <- NA_real_
-    if (anyNA(timings)) {
-        nas <- sum(is.na(timings))
-        if (nas == length(timings))
-            stop("All timed evaluations were either smaller than the estimated \
+  if (length(list(...)) == 0) {
+    stop("No expressions to benchmark.")
+  }
+  if (times <= 0L) {
+    stop("Argument 'times' should be positive integer.")
+  }
+  order <- match.arg(order)
+  exprs <- named_dots(...)
+  exprs_order <- make_order(exprs, times, order)
+  warmup <- getOption("benchr.warmup", 2e5L)
+  if (gcFirst) gc(FALSE)
+  error <- timer_error(warmup)
+  timings <- do_benchmark(exprs, parent.frame(), exprs_order, gcDuring, progress)
+  timings <- timings - error
+  timings[timings < 0] <- NA_real_
+  if (anyNA(timings)) {
+    nas <- sum(is.na(timings))
+    if (nas == length(timings)) {
+      stop("All timed evaluations were either smaller than the estimated \
                  timer error or zero. The most likely cause is a low resolution clock.")
-        else
-            warning(sprintf("Could not measure a positive execution time for \
+    } else {
+      warning(sprintf("Could not measure a positive execution time for \
                             %i evaluations.", nas))
     }
-    structure(
-        list(expr = exprs_order, time = timings),
-        class = c("benchmark", "data.frame"),
-        row.names = c(NA_integer_, -length(timings)),
-        units = "s",
-        error = error,
-        precision = timer_precision(),
-        order = order,
-        gc = gcDuring,
-        times = times)
+  }
+  structure(
+    list(expr = exprs_order, time = timings),
+    class = c("benchmark", "data.frame"),
+    row.names = c(NA_integer_, -length(timings)),
+    units = "s",
+    error = error,
+    precision = timer_precision(),
+    order = order,
+    gc = gcDuring,
+    times = times
+  )
 }

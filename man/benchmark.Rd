@@ -82,7 +82,6 @@ print(res)
 
 ## Plot results
 boxplot(res)
-
 }
 \seealso{
 \code{\link[=summary.benchmark]{summary.benchmark()}},

@@ -40,18 +40,19 @@
 #'
 #' @examples
 #' timings <- benchmark(
-#'     rchisq(100, 0), rchisq(100, 1), rchisq(100, 2),
-#'     rchisq(100, 3), rchisq(100, 5), times = 1000L)
+#'   rchisq(100, 0), rchisq(100, 1), rchisq(100, 2),
+#'   rchisq(100, 3), rchisq(100, 5),
+#'   times = 1000L
+#' )
 #' summary(timings)
-#'
 summary.benchmark <- function(object, relative = "median", ...) {
-    cols <- c("min", "lw.qu", "median", "mean", "up.qu", "max", "total")
-    fun <- function(x) {
-        if (anyNA(x)) x <- x[!is.na(x)]
-        qq <- quantile(x)
-        s <- sum(x)
-        n <- length(x)
-        c(n, qq[1L:3L], s / n, qq[4L:5L], s)
-    }
-    summarise(object, cols, fun, relative)
+  cols <- c("min", "lw.qu", "median", "mean", "up.qu", "max", "total")
+  fun <- function(x) {
+    if (anyNA(x)) x <- x[!is.na(x)]
+    qq <- quantile(x)
+    s <- sum(x)
+    n <- length(x)
+    c(n, qq[1L:3L], s / n, qq[4L:5L], s)
+  }
+  summarise(object, cols, fun, relative)
 }

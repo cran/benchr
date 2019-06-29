@@ -4,7 +4,6 @@
 \name{benchr}
 \alias{benchr}
 \alias{benchr-package}
-\alias{benchr-package}
 \title{High Precise Measurement of R Expressions Execution Time}
 \description{
 Package \pkg{benchr} provides an infrastructure (framework) for precise
@@ -76,14 +75,15 @@ used to produce plots, if the package is installed (\code{TRUE} by default).}
 
 \examples{
 # Benchmark expressions
-res <- benchmark(rep(1:10, each = 10),
-                 rep.int(1:10, rep.int(10, 10)))
+res <- benchmark(
+  rep(1:10, each = 10),
+  rep.int(1:10, rep.int(10, 10))
+)
 # Aggregated statistics
 mean(res)
 summary(res)
 # Plot results
 boxplot(res)
-
 }
 \seealso{
 Useful links:

@@ -37,10 +37,11 @@ to \code{FALSE}: \code{options(benchr.use_ggplot = FALSE)}.
 }
 \examples{
 timings <- benchmark(
-    rchisq(100, 0), rchisq(100, 1), rchisq(100, 2),
-    rchisq(100, 3), rchisq(100, 5), times = 1000L)
+  rchisq(100, 0), rchisq(100, 1), rchisq(100, 2),
+  rchisq(100, 3), rchisq(100, 5),
+  times = 1000L
+)
 boxplot(timings)
-
 }
 \seealso{
 \code{\link[=plot.benchmark]{plot.benchmark()}}

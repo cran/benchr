@@ -21,9 +21,9 @@
 #' \item{trimmed}{Trimmed sample mean for timing results (a fraction of
 #' observations to be trimmed is defined by the argument `trim`).}
 #' \item{lw.ci}{Lower boundary for the confidence level (confidence level is
-#'specified by the argument `conf.level`).}
+#' specified by the argument `conf.level`).}
 #' \item{up.ci}{Upper boundary for the confidence level (confidence level is
-#'specified by the argument `conf.level`).}
+#' specified by the argument `conf.level`).}
 #' \item{relative}{Relative difference across expressions compared to a minimal
 #' value in the column, specified by the argument `relative`.}
 #'
@@ -45,28 +45,31 @@
 #'
 #' @examples
 #' timings <- benchmark(
-#'     rchisq(100, 0), rchisq(100, 1), rchisq(100, 2),
-#'     rchisq(100, 3), rchisq(100, 5), times = 1000L)
+#'   rchisq(100, 0), rchisq(100, 1), rchisq(100, 2),
+#'   rchisq(100, 3), rchisq(100, 5),
+#'   times = 1000L
+#' )
 #' mean(timings)
-#'
 mean.benchmark <- function(x, trim = 0.05, conf.level = 0.95, relative = "mean", ...) {
-    if (attr(x, "times") >= 5L) {
-        cols <- c("mean", "trimmed", "lw.ci", "up.ci")
-        fun <- function(x) {
-            if (anyNA(x)) x <- x[!is.na(x)]
-            s <- sum(x)
-            n <- length(x)
-            c(n, s / n, mean.default(x, trim = trim),
-              wilcox.test(x, conf.int = TRUE, conf.level = conf.level)$conf.int)
-        }
-    } else {
-        cols <- c("mean", "trimmed")
-        fun <- function(x) {
-            if (anyNA(x)) x <- x[!is.na(x)]
-            s <- sum(x)
-            n <- length(x)
-            c(n, s / n, mean.default(x, trim = trim))
-        }
+  if (attr(x, "times") >= 5L) {
+    cols <- c("mean", "trimmed", "lw.ci", "up.ci")
+    fun <- function(x) {
+      if (anyNA(x)) x <- x[!is.na(x)]
+      s <- sum(x)
+      n <- length(x)
+      c(
+        n, s / n, mean.default(x, trim = trim),
+        wilcox.test(x, conf.int = TRUE, conf.level = conf.level)$conf.int
+      )
     }
-    summarise(x, cols, fun, relative)
+  } else {
+    cols <- c("mean", "trimmed")
+    fun <- function(x) {
+      if (anyNA(x)) x <- x[!is.na(x)]
+      s <- sum(x)
+      n <- length(x)
+      c(n, s / n, mean.default(x, trim = trim))
+    }
+  }
+  summarise(x, cols, fun, relative)
 }

@@ -54,7 +54,7 @@
 #' [is.language()]) and do not coerce to that type.
 #'
 #' @section Package options:
-#" Some of the available functionality is hidden from the user and not
+# " Some of the available functionality is hidden from the user and not
 #' accessible through function arguments. We allow to modify these parameters
 #' via package options. We have tried to set optimal default values, which you
 #' may consider changing in some cases. Here's a complete list of package options:
@@ -69,14 +69,15 @@
 #'
 #' @examples
 #' # Benchmark expressions
-#' res <- benchmark(rep(1:10, each = 10),
-#'                  rep.int(1:10, rep.int(10, 10)))
+#' res <- benchmark(
+#'   rep(1:10, each = 10),
+#'   rep.int(1:10, rep.int(10, 10))
+#' )
 #' # Aggregated statistics
 #' mean(res)
 #' summary(res)
 #' # Plot results
 #' boxplot(res)
-#'
 #' @name benchr
 #' @docType package
 #'

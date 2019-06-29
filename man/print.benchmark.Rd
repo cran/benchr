@@ -8,7 +8,8 @@
 \method{print}{benchmark}(x, units = "auto", order = "none",
   relative = "median", details = FALSE, ...)
 
-\method{print}{summaryBenchmark}(x, units = "auto", order = "none", ...)
+\method{print}{summaryBenchmark}(x, units = "auto", order = "none",
+  ...)
 }
 \arguments{
 \item{x}{An object of class \code{benchmark}, \code{summaryBenchmark} or
@@ -47,12 +48,13 @@ execution regime and the number of repeats.
 }
 \examples{
 a1 <- a2 <- a3 <- a4 <- numeric(0)
-res <- benchmark(a1 <- c(a1, 1),
-                 a2 <- append(a2, 1),
-                 a3[length(a3) + 1] <- 1,
-                 a4[[length(a4) + 1]] <- 1)
+res <- benchmark(
+  a1 <- c(a1, 1),
+  a2 <- append(a2, 1),
+  a3[length(a3) + 1] <- 1,
+  a4[[length(a4) + 1]] <- 1
+)
 print(res)
-
 }
 \seealso{
 \code{\link[=summary.benchmark]{summary.benchmark()}},

@@ -40,38 +40,43 @@
 #'
 #' @examples
 #' a1 <- a2 <- a3 <- a4 <- numeric(0)
-#' res <- benchmark(a1 <- c(a1, 1),
-#'                  a2 <- append(a2, 1),
-#'                  a3[length(a3) + 1] <- 1,
-#'                  a4[[length(a4) + 1]] <- 1)
+#' res <- benchmark(
+#'   a1 <- c(a1, 1),
+#'   a2 <- append(a2, 1),
+#'   a3[length(a3) + 1] <- 1,
+#'   a4[[length(a4) + 1]] <- 1
+#' )
 #' print(res)
-#'
 print.benchmark <- function(x, units = "auto", order = "none",
                             relative = "median", details = FALSE, ...) {
-    if (getOption("benchr.print_details", details)) {
-        cat("Benchmark details:\n")
-        print_details(x)
-    }
-    cat("Benchmark summary:\n")
-    print(summary(x, relative), units, order, ...)
-    invisible(x)
+  if (getOption("benchr.print_details", details)) {
+    cat("Benchmark details:\n")
+    print_details(x)
+  }
+  cat("Benchmark summary:\n")
+  print(summary(x, relative), units, order, ...)
+  invisible(x)
 }
 
 # Print a benchmark details info
 #' @include units.R
 print_details <- function(x) {
-    fields <- c("Timer precision",
-                "Timer error",
-                "Replications",
-                "Expressions order",
-                "Garbage collection")
-    values <- c(format_units(attr(x, "precision")),
-                format_units(attr(x, "error")),
-                attr(x, "times"),
-                attr(x, "order"),
-                attr(x, "gc"))
-    cat(paste(format(fields, justify = "right"), ":", values), sep = "\n")
-    invisible(x)
+  fields <- c(
+    "Timer precision",
+    "Timer error",
+    "Replications",
+    "Expressions order",
+    "Garbage collection"
+  )
+  values <- c(
+    format_units(attr(x, "precision")),
+    format_units(attr(x, "error")),
+    attr(x, "times"),
+    attr(x, "order"),
+    attr(x, "gc")
+  )
+  cat(paste(format(fields, justify = "right"), ":", values), sep = "\n")
+  invisible(x)
 }
 
 #' @method print summaryBenchmark
@@ -79,13 +84,14 @@ print_details <- function(x) {
 #' @rdname print.benchmark
 #' @include units.R
 print.summaryBenchmark <- function(x, units = "auto", order = "none", ...) {
-    nm <- names(x)
-    cols <- nm[!nm %in% c("expr", "n.eval", "relative")]
-    xx <- convert_units(x, units)
-    if (order != "none")
-        xx <- xx[do.call(base::order, xx[order]), ]
-    xx[cols] <- signif(xx[cols], 3L)
-    cat("Time units", ":", pretty_unit(attr(xx, "units")), "\n")
-    print.data.frame(xx, ..., row.names = FALSE)
-    invisible(x)
+  nm <- names(x)
+  cols <- nm[!nm %in% c("expr", "n.eval", "relative")]
+  xx <- convert_units(x, units)
+  if (order != "none") {
+    xx <- xx[do.call(base::order, xx[order]), ]
+  }
+  xx[cols] <- signif(xx[cols], 3L)
+  cat("Time units", ":", pretty_unit(attr(xx, "units")), "\n")
+  print.data.frame(xx, ..., row.names = FALSE)
+  invisible(x)
 }
