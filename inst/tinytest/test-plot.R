@@ -1,15 +1,9 @@
 library(benchr)
 library(ggplot2)
 
-b <- benchr::benchmark(1 + 1, 2 + 2)
-
-options(benchr.use_ggplot = FALSE)
-expect_true(is.null(plot(b)))
-expect_true(is.null(boxplot(b)))
-
-
 options(benchr.use_ggplot = TRUE)
 
+b <- benchr::benchmark(1 + 1, 2 + 2)
 
 bp <- benchr:::boxplot_ggplot(b, xlab = "expr", ylab = "time", log = FALSE)
 expect_equal(class(bp), c("gg", "ggplot"))

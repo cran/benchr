@@ -39,7 +39,7 @@ m3 <- mean(benchr::benchmark(1 + 1, times = 5))
 expect_equal(class(m3$lw.ci), "numeric")
 expect_equal(class(m3$up.ci), "numeric")
 expect_true(m3$lw.ci > 0)
-expect_true(m3$up.ci > m3$lw.ci)
+expect_true(m3$up.ci >= m3$lw.ci)
 
 m4 <- mean(benchr::benchmark(1 + 1, times = 1))
 expect_true(is.null(m4$lw.ci))
