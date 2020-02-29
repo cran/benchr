@@ -4,8 +4,7 @@
 \alias{plot.benchmark}
 \title{Plot method for the \code{benchmark} timings.}
 \usage{
-\method{plot}{benchmark}(x, units = "auto", log = TRUE, xlab, ylab,
-  ...)
+\method{plot}{benchmark}(x, units = "auto", log = TRUE, xlab, ylab, ...)
 }
 \arguments{
 \item{x}{An object of class \code{benchmark}.}

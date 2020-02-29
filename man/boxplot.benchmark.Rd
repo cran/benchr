@@ -4,8 +4,16 @@
 \alias{boxplot.benchmark}
 \title{Boxplot method for the \code{benchmark} timings}
 \usage{
-\method{boxplot}{benchmark}(x, units = "auto", log = TRUE, xlab, ylab,
-  horizontal = FALSE, violin = FALSE, ...)
+\method{boxplot}{benchmark}(
+  x,
+  units = "auto",
+  log = TRUE,
+  xlab,
+  ylab,
+  horizontal = FALSE,
+  violin = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{An object of class \code{benchmark}.}

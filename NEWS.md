@@ -1,3 +1,7 @@
+# becnhr 0.2.4
+
+- Fix check eeror on R devel (due stringsAsFactors).
+
 # becnhr 0.2.3
 
 - Switch tests framework from the `testthat` to `tinytest`.

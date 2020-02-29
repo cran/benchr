@@ -44,5 +44,6 @@ summarise <- function(x, cols, fun, relative) {
     relative <- match.arg(relative, cols)
     res$relative <- signif(res[[relative]] / min(res[[relative]]), 3)
   }
+  res$expr <- as.factor(res$expr)
   res
 }

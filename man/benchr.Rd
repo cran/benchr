@@ -28,7 +28,7 @@ only estimate the overhead, but also produce a warm-up effect on the
 processor, taking it out from idle state. After the actual measurement
 results are adjusted by the timer overhead.
 
-Time intervals are measured in seconds and stored as \code{long double},
+Time intervals are measured in seconds and stored as \verb{long double},
 which lets us capture a wide range of possible values from
 \code{.Machine$double.xmin} to \code{.Machine$double.xmax}. This is quite
 enough to operate both within very small (nanoseconds) and very big time
@@ -94,7 +94,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Artem Klevtsov \email{a.a.klevtsov@gmail.com}
+\strong{Maintainer}: Artem Klevtsov \email{a.a.klevtsov@gmail.com} (\href{https://orcid.org/0000-0003-0492-6647}{ORCID})
 
 Other contributors:
 \itemize{

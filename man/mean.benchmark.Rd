@@ -4,8 +4,7 @@
 \alias{mean.benchmark}
 \title{Mean method for the \code{benchmark} timings.}
 \usage{
-\method{mean}{benchmark}(x, trim = 0.05, conf.level = 0.95,
-  relative = "mean", ...)
+\method{mean}{benchmark}(x, trim = 0.05, conf.level = 0.95, relative = "mean", ...)
 }
 \arguments{
 \item{x}{An object of class \code{benchmark}.}

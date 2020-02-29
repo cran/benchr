@@ -4,9 +4,15 @@
 \alias{benchmark}
 \title{High Precise Measurement of R Expressions Execution Time}
 \usage{
-benchmark(..., times = 100L, order = c("random", "inorder", "block"),
-  envir = parent.frame(), progress = TRUE, gcFirst = TRUE,
-  gcDuring = FALSE)
+benchmark(
+  ...,
+  times = 100L,
+  order = c("random", "inorder", "block"),
+  envir = parent.frame(),
+  progress = TRUE,
+  gcFirst = TRUE,
+  gcDuring = FALSE
+)
 }
 \arguments{
 \item{...}{Captures any number of unevaluated expressions passed to

@@ -5,11 +5,16 @@
 \alias{print.summaryBenchmark}
 \title{Print method for the \code{benchmark} timings.}
 \usage{
-\method{print}{benchmark}(x, units = "auto", order = "none",
-  relative = "median", details = FALSE, ...)
+\method{print}{benchmark}(
+  x,
+  units = "auto",
+  order = "none",
+  relative = "median",
+  details = FALSE,
+  ...
+)
 
-\method{print}{summaryBenchmark}(x, units = "auto", order = "none",
-  ...)
+\method{print}{summaryBenchmark}(x, units = "auto", order = "none", ...)
 }
 \arguments{
 \item{x}{An object of class \code{benchmark}, \code{summaryBenchmark} or
