@@ -1,3 +1,7 @@
+# benchr 0.2.5
+
+- Fix ggplot tests related with the changes in ggplot2 3.3.0.
+
 # becnhr 0.2.4
 
 - Fix check eeror on R devel (due stringsAsFactors).

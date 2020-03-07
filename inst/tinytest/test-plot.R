@@ -13,7 +13,7 @@ expect_true(is(bp$layers[[1]]$geom, "GeomBoxplot"))
 expect_true(is(bp$layers[[1]]$stat, "StatBoxplot"))
 
 bpp <- ggplot2::ggplot_build(bp)
-expect_equal(bpp$layout$panel_params[[1]]$x.labels, c("1 + 1", "2 + 2"))
+expect_equal(bpp$layout$panel_params[[1]]$x$limits, c("1 + 1", "2 + 2"))
 expect_equal(bpp$plot$scales$scales[[2]]$trans$name, "identity")
 
 
@@ -25,7 +25,7 @@ expect_true(is(bph$layers[[1]]$geom, "GeomBoxplot"))
 expect_true(is(bph$layers[[1]]$stat, "StatBoxplot"))
 
 bphp <- ggplot2::ggplot_build(bph)
-expect_equal(bphp$layout$panel_params[[1]]$y.labels, c("1 + 1", "2 + 2"))
+expect_equal(bphp$layout$panel_params[[1]]$y$limits, c("1 + 1", "2 + 2"))
 expect_equal(bphp$plot$scales$scales[[1]]$trans$name, "log-10")
 
 
@@ -37,7 +37,7 @@ expect_true(is(bpv$layers[[1]]$geom, "GeomViolin"))
 expect_true(is(bpv$layers[[1]]$stat, "StatYdensity"))
 
 bpvp <- ggplot2::ggplot_build(bpv)
-expect_equal(bpvp$layout$panel_params[[1]]$x.labels, c("1 + 1", "2 + 2"))
+expect_equal(bpvp$layout$panel_params[[1]]$x$limits, c("1 + 1", "2 + 2"))
 expect_equal(bpvp$plot$scales$scales[[1]]$trans$name, "log-10")
 
 

@@ -1,6 +1,6 @@
-d462221a3b8a14beb9710f6746da8ca5 *DESCRIPTION
+ffa920dca58bf057c9c7916bd86f6a37 *DESCRIPTION
 8e272434c71f88e8e89d179c914f735e *NAMESPACE
-e604e3e1f0f771146ff0e389fd1e8f75 *NEWS.md
+c47c6f545105638407f2350b5e7b0f86 *NEWS.md
 1cfd3b72d412596e237b6fe9359f8b61 *R/RcppExports.R
 ba35eab30c20f75e46296d574c3e1aa8 *R/benchmark.R
 8d80cc612e51782063777947218f6369 *R/benchr-package.R
@@ -19,7 +19,7 @@ d481aee6922ec429b67d18484c4ae0be *inst/tinytest/test-dots.R
 cbfc41db05260b735be4acf696ff2bb1 *inst/tinytest/test-format.R
 ced7902f9b0212ba9068ccacef99a00f *inst/tinytest/test-mean.R
 abfaba67ae42b7706d65ecfa2f9aa6ff *inst/tinytest/test-order.R
-6595149c46899dedbc87681065154c89 *inst/tinytest/test-plot.R
+628066b797d5d25aa00f43701cbadc03 *inst/tinytest/test-plot.R
 f7632370b6923279fae09da1d92c7796 *inst/tinytest/test-print.R
 df5d4bf61ad4dd0892cb4040cf4bb4ad *inst/tinytest/test-summary.R
 9716067afc4d660a4363d64e94433235 *inst/tinytest/test-timer.R
